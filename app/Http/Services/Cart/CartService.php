@@ -90,7 +90,7 @@ class CartService
             Session::forget('carts');
         } catch (\Exception $err) {
             DB::rollBack();
-            Session::flash('error', 'Đặt hàng không thành công. Vui lòng thử đặt lại!!!');
+            Session::flash('error', 'Đặt hàng không thành công. Vui lòng nhập đầy đủ thông tin khách hàng!!!');
             return false;
         }
         return true;
@@ -114,5 +114,17 @@ class CartService
         }
 
         return Cart::insert($data);
+    }
+
+    public function getCustomer()
+    {
+        return Customer::orderByDesc('id')->paginate(10);
+    }
+
+    public function getProductForCart($customer)
+    {
+        return $customer->carts()->with(['product'=>function($query){
+            $query->select('id','name','thumb');
+        }])->get();
     }
 }

@@ -31,5 +31,5 @@
     <!-- Search -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+<!-- 
+    <meta name="csrf-token" content="{{ csrf_token() }}"> -->
